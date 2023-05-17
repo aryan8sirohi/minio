@@ -5,6 +5,8 @@ import { useSession, getSession } from "next-auth/react";
 import axios from "axios";
 import { Image } from "react-bootstrap";
 import OrderList from "../../components/orderList/orderList";
+// import { useUser } from "@clerk/nextjs";
+// import {useRouter} from 'next/navigation'
 
 const groupOrder = () => {
   const [order, setOrder] = useState([]);
@@ -19,6 +21,19 @@ const groupOrder = () => {
       setOrder(res.data.order);
     }
   };
+  //  New work clerk auth
+   
+
+  // const Page= ()=> {
+  //   const { isLoaded, isSignedIn , user}= useUser()
+  //   const router = useRouter()
+
+  //   if (isLoaded && !isSignedIn){
+  //     router.push("/sign-in? redirectUrl=/member")
+  //   }
+  // }
+
+  
   return (
     <>
       <div className="text-6xl">

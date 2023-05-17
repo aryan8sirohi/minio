@@ -92,6 +92,8 @@ const productListPage: NextPage = () => {
       }
     }
   }, []);
+  /* newly added clerk fun */
+ 
   return (
     <>
       <h1 className="mt-20 mb-20 text-center text-purple-600">Product List</h1>

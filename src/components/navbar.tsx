@@ -21,6 +21,9 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
 import Button from "react-bootstrap/Button";
+// import { SignInButton , UserButton } from "@clerk/nextjs";
+// import { SignedIn, SignedOut } from "@clerk/nextjs/dist/components.server";
+
 
 const Header = () => {
   const { data: sessionData } = useSession();
@@ -105,21 +108,25 @@ const Header = () => {
                   SHOP
                 </Link>
                 {sessionData && (
+                  // <SignedIn>
                   <Link
                     href="/member/group-order"
                     className="text-xl font-medium text-black no-underline"
                   >
                     GROUP ORDER
                   </Link>
+                  // </SignedIn>
                 )}
 
                 {sessionData && (
+                  // <SignedIn>
                   <Link
                     href="/group/list"
                     className="text-xl font-medium text-black no-underline"
                   >
                     GROUPS
                   </Link>
+                  // </SignedIn>
                 )}
 
 
@@ -241,13 +248,19 @@ const Header = () => {
                 ) : (
                   ""
                 )}
-
+                {/* <SignedIn>
+                  <UserButton />
+                </SignedIn>
+                <SignedOut>
+                <SignInButton> */}
                 <button
                   className="rounded-full border-4 border-black px-10 py-3 font-semibold no-underline transition"
                   onClick={() => signIn()}
                 >
                   Sign in
                 </button>
+                {/* </SignInButton>
+                </SignedOut> */}
               </div>
             </div>
           </header>

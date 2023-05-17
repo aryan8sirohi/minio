@@ -13,6 +13,8 @@ import {
 } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import { getRemainingTime } from "../../utils/utils";
+// import { useUser } from "@clerk/nextjs";
+
 
 const GroupList = () => {
   const [groups, setGroups] = useState([]);
@@ -44,6 +46,16 @@ const GroupList = () => {
   const filteredGroups = groups.filter((group: any) =>
     group.groupName.toLowerCase().includes(searchText.toLowerCase())
   );
+
+    // my new work
+  // const Page= ()=> {
+  //   const { isLoaded, isSignedIn , user}= useUser()
+  //   const router = useRouter()
+
+  //   if (isLoaded && !isSignedIn){
+  //     router.push("/sign-in? redirectUrl=/member")
+  //   }
+  // }
 
   return (
     <Container fluid>

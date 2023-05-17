@@ -8,14 +8,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "../components/footer";
 import Header from "../components/navbar";
 import { store } from "../app/store";
+import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import { Provider } from "react-redux";
+import {  UserButton , SignIn} from "@clerk/nextjs/app-beta";
+import { SignedIn, SignedOut } from "@clerk/nextjs/app-beta";
+
+// import ClerkWrapper from '../../clerk.js'
+
+
+
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <SessionProvider session={session}>
+      <ClerkProvider>
+      <SessionProvider session={session}>
       <Provider store={store}>
         <Head>
           <title>Groops</title>
@@ -24,10 +33,18 @@ const MyApp: AppType<{ session: Session | null }> = ({
         </Head>
         <Header />
         {/* {router.pathname === "/demo" && <Demo />} */}
+         <SignedIn> 
+          <UserButton />
         <Component {...pageProps} />
+        </SignedIn>
+        <SignedOut>
+          <SignIn />
+        </SignedOut>
         <Footer />
       </Provider>
     </SessionProvider>
+ 
+       </ClerkProvider> 
   );
 };
 
